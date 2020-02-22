@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap&subset=cyrillic,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Russo One', sans-serif;
+  color: rgba(255, 255, 255, 0.911);
+}
+body{
+  background-position: initial;
+  background-repeat: repeat;
+  background-size: initial;
+  min-height: 100vh;
+  // display: flex;
+  // justify-content: center;
+  position: relative;
+  //filter: blur(3px);
+  //background: url(./img/background.jpg);
+  //background-color: green;
+  background: url(./img/background.jpg);
+}
+
+.app{
+  width: 70vw;
+  max-width: 800px;
+  min-width: 300px;
+  height: 80vh;
+  max-height: 700px;
+  //border: 3px solid red;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.26);
+  border-radius: 20px;
+}
+
+.searchBox{
+  //width: 100%;
+  display: flex;
+
+  form{
+    width: -webkit-fill-available;
+  }
+  button{
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: rgba(255, 0, 0, 0.397);
+    border: 3px solid rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+  }
+
+  .searchBar{
+    background: rgba(255, 255, 255, 0.212);
+    //width: -webkit-fill-available;
+    //display: block;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.26);
+    color: rgb(255, 255, 255);
+    //margin: 0 auto;
+    font-size: 20px;
+    padding: 10px 20px;
+    appearance: none;
+    outline: none;
+    text-align: center;
+  }
+  .searchBar::placeholder{
+    color: rgb(255, 255, 255);
+  }
+  .searchBar:hover{
+    background: rgba(255, 255, 255, 0.76);
+  }
+  .searchBar:focus{
+    background: rgb(255, 255, 255);
+    color: black;
+  }
+}
+
+
+.mainInfo{
+  padding: 15px;
+  margin: 25px 0 0 0;
+  border: 1px solid white;
+  font-size: 20px;
+
+  .temp{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    i{
+      color: rgb(71, 71, 71);
+      font-size: 150px;
+      margin: 0 0 0 25px;
+    }
+    h1{
+      font-size: 200px;
+      font-family: 'Odibee Sans', cursive;
+      color: rgb(90, 90, 90);
+    }
+  }
+  .additional{
+    display: flex;
+    justify-content: center;
+
+    h3{
+      margin: 0 30px;
+    }
+  }
+}
