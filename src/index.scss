@@ -4,46 +4,80 @@
   margin: 0;
   padding: 0;
   font-family: 'Russo One', sans-serif;
-  color: rgba(255, 255, 255, 0.911);
+  color:  rgba(0, 0, 0, 0.842);;
 }
 body{
   background-position: initial;
   background-repeat: repeat;
   background-size: initial;
   min-height: 100vh;
-  // display: flex;
-  // justify-content: center;
   position: relative;
-  //filter: blur(3px);
-  //background: url(./img/background.jpg);
-  //background-color: green;
   background: url(./img/background.jpg);
 }
 
 .app{
   width: 70vw;
+  //overflow: hidden;
   max-width: 800px;
   min-width: 300px;
-  height: 80vh;
-  max-height: 700px;
-  //border: 3px solid red;
+  //height: 480px;
   padding: 15px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background: rgba(0, 0, 0, 0.26);
   border-radius: 20px;
+  box-shadow: 14px 20px 27px 17px rgba(0,0,0,0.54);
+  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.74) 100%);
 }
 
 .searchBox{
-  //width: 100%;
-  display: flex;
+  width: 100%;
+  position: relative;
+
+  #searchTable{
+    //border: 1px solid green;
+    transform: translate(0, -7px);
+    right: 170px;
+    width: calc(100% - 176px);
+    position:absolute;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.26);
+    border-left: 3px solid rgba(0, 0, 0, 0.26);
+    border-right: 3px solid rgba(0, 0, 0, 0.26);
+    background: rgb(255, 255, 255);
+    display: none;
+  
+    tbody{
+      display: flex;
+      flex-direction: column;
+    }
+    tbody, th, tr, button{
+      width: 100%;
+    }
+    th{
+      display: block;
+    }
+    button{
+      //width: 100%;
+      background: transparent;
+      border-bottom: 3px solid rgba(0, 0, 0, 0.26);
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: initial;
+    } button:hover{
+      background: rgba(248, 0, 0, 0.644);
+    }
+  }
 
   form{
     width: -webkit-fill-available;
+    display: flex;
   }
+  #btn0, #btn1, #btn2, #btn3, #btn4{
+    display: none;
+  } 
   button{
     font-size: 20px;
     padding: 10px 20px;
@@ -52,15 +86,17 @@ body{
     border: 3px solid rgba(0, 0, 0, 0.26);
     cursor: pointer;
   }
+  button:hover{
+    background: rgba(255, 0, 0, 0.534);
+  }
 
   .searchBar{
+    width: -webkit-fill-available;
+    width: -moz-available;
     background: rgba(255, 255, 255, 0.212);
-    //width: -webkit-fill-available;
-    //display: block;
     border-radius: 10px;
     border: 3px solid rgba(0, 0, 0, 0.26);
-    color: rgb(255, 255, 255);
-    //margin: 0 auto;
+    color: rgb(109, 109, 109);
     font-size: 20px;
     padding: 10px 20px;
     appearance: none;
@@ -68,14 +104,17 @@ body{
     text-align: center;
   }
   .searchBar::placeholder{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
   }
   .searchBar:hover{
     background: rgba(255, 255, 255, 0.76);
   }
   .searchBar:focus{
-    background: rgb(255, 255, 255);
-    color: black;
+    background: rgb(245, 245, 245);
+    color: rgb(0, 0, 0);
+  }
+  .searchBar:focus::placeholder{
+    color: rgba(17, 17, 17, 0.781);
   }
 }
 
@@ -83,30 +122,101 @@ body{
 .mainInfo{
   padding: 15px;
   margin: 25px 0 0 0;
-  border: 1px solid white;
+  //border: 1px solid rgba(255, 255, 255, 0.808);
   font-size: 20px;
+  display: none;
+  transition: opacity 500ms;
+
+  img{
+    width: 40px;
+    height: 22px;
+    margin: 0 15px;
+  }
+  h2{
+    display: inline-block;
+  }
 
   .temp{
     display: flex;
     justify-content: center;
     margin-top: 50px;
     i{
-      color: rgb(71, 71, 71);
+      color: rgb(0, 0, 0);
       font-size: 150px;
       margin: 0 0 0 25px;
     }
     h1{
-      font-size: 200px;
+      font-size: 150px;
       font-family: 'Odibee Sans', cursive;
-      color: rgb(90, 90, 90);
+      color: rgb(0, 0, 0);
     }
   }
   .additional{
-    display: flex;
-    justify-content: center;
+    margin: 20px 0 -20px 0;
 
     h3{
-      margin: 0 30px;
+      margin: 10px 0;
+      border-bottom: 4px solid rgb(208, 208, 208);
     }
   }
+}
+
+
+
+
+
+
+
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+@media screen and(max-width:700px){
+.app{
+  width: 85vw;
+  height: auto;
+}
+
+.app{
+  min-width: 250px;
+}
+
+.searchBox{
+
+  form{
+    display: block;
+  }
+  button{
+    margin-top: 5px;
+    padding: 5px 20px;
+    width: 100%;
+  }
+}
+
+
+.mainInfo{
+  padding: 10px;
+  margin: 15px 0 0 0;
+  font-size: 15px;
+
+  img{
+    height: 22px;
+    margin: 0 0 -2px 15px;
+  }
+
+  .temp{
+    display: block;
+    margin: 10px auto;
+    i{
+      font-size: 100px;
+      margin: 10px auto 0 auto;
+    }
+    h1{
+      font-size: 150px;
+    }
+  }
+}
+
 }
