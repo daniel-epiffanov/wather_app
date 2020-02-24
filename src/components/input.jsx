@@ -3,141 +3,137 @@ import 'weather-icons/css/weather-icons.css';
 
 function Input(props) {
 
-    let records0, records1, records2, records3, records4 = null;
+    let records0 = {res: null, country: null, name: null};
+    let records1 = {res: null, country: null, name: null};
+    let records2 = {res: null, country: null, name: null};
+    let records3 = {res: null, country: null, name: null};
+    let records4 = {res: null, country: null, name: null};
 
-    const searchSelection = (name, alternate_names, numOfEl) => {
+    const searchSelection = (name, alternate_names, country_code, numOfEl) => {
+        let country_lc = country_code.toLowerCase();
         let split_names = [];
-        if (alternate_names) {
-            split_names = alternate_names.split(",");   
-        }
+        if (alternate_names) split_names = alternate_names.split(",");
         split_names.push(name);
 
-        // console.log('split_names >>>', split_names);
         let res = [];
-        for (let index = 0; index < split_names.length; index++) {
-            const element = split_names[index];
-            if (element.startsWith(props.inputValue) === true) {
+        for (let i = 0; i < split_names.length; i++) {
+            const element = split_names[i];
+            if (element.startsWith(props.inputValue) === true || element.includes(props.inputValue)) {
                 res.push(element);
             }
         }
-         console.log('res >>>', res);
-         console.log('numOfEl >>>', numOfEl);
 
-        if (numOfEl === 0) { records0 = res[0] }
-        else if (numOfEl === 1)  {records1 = res[0]}
-        else if (numOfEl === 2)  {records2 = res[0]}
-        else if (numOfEl === 3)  {records3 = res[0]}
-        else if (numOfEl === 4)  {records4 = res[0]}
-
-         console.log('records0 >>>', records0);
-         console.log('records1 >>>', records1);
-         console.log('records2 >>>', records2);
-         console.log('records3 >>>', records3);
-         console.log('records4 >>>', records4);
+        if (numOfEl === 0) records0 = { res: res[0], country: country_lc, name:name}
+        else if (numOfEl === 1) records1 = { res: res[0], country: country_lc, name:name}
+        else if (numOfEl === 2) records2 = { res: res[0], country: country_lc, name:name}
+        else if (numOfEl === 3) records3 = { res: res[0], country: country_lc, name:name}
+        else if (numOfEl === 4) records4 = { res: res[0], country: country_lc, name:name}
     }
+    const rec = (num) => {
+        let name = props.searchResults[num].fields.name;
+        let alternate_names = props.searchResults[num].fields.alternate_names;
+        let country = props.searchResults[num].fields.country_code;
+        let res = { name, alternate_names, country}
+        return res;
+    }
+    let input0 = () => { let res = rec(0); searchSelection(res.name, res.alternate_names, res.country, 0);}
+    let input1 = () => { let res = rec(1); searchSelection(res.name, res.alternate_names, res.country, 1);}
+    let input2 = () => { let res = rec(2); searchSelection(res.name, res.alternate_names, res.country, 2);}
+    let input3 = () => { let res = rec(3); searchSelection(res.name, res.alternate_names, res.country, 3);}
+    let input4 = () => { let res = rec(4); searchSelection(res.name, res.alternate_names, res.country, 4); }
 
-    let name0, alternate_names0, name1, alternate_names1, name2, alternate_names2, name3, alternate_names3, name4, alternate_names4 = null;
-    switch (props.finalArr.length) {
+    switch (props.searchResults.length) {
         case 1:
-            name0 = props.finalArr[0].fields.name;
-            alternate_names0 = props.finalArr[0].fields.alternate_names;
-            searchSelection(name0, alternate_names0, 0);
+            input0();
             records1 = null; records2 = null; records3 = null; records4 = null;
             break;
         case 2:
-            name0 = props.finalArr[0].fields.name; alternate_names0 = props.finalArr[0].fields.alternate_names;
-            searchSelection(name0, alternate_names0, 0);
-            name1 = props.finalArr[1].fields.name; alternate_names1 = props.finalArr[1].fields.alternate_names;
-            searchSelection(name1, alternate_names1, 1);
+            input0(); input1();
             records2 = null; records3 = null; records4 = null;
             break;
         case 3:
-            name0 = props.finalArr[0].fields.name; alternate_names0 = props.finalArr[0].fields.alternate_names;
-            searchSelection(name0, alternate_names0, 0);
-            name1 = props.finalArr[1].fields.name; alternate_names1 = props.finalArr[1].fields.alternate_names;
-            searchSelection(name1, alternate_names1, 1);
-            name2 = props.finalArr[2].fields.name; alternate_names2 = props.finalArr[2].fields.alternate_names;
-            searchSelection(name2, alternate_names2, 2);
+            input0(); input1(); input2();
             records3 = null;  records4 = null;
             break;
         case 4:
-            name0 = props.finalArr[0].fields.name; alternate_names0 = props.finalArr[0].fields.alternate_names;
-            searchSelection(name0, alternate_names0, 0);
-            name1 = props.finalArr[1].fields.name; alternate_names1 = props.finalArr[1].fields.alternate_names;
-            searchSelection(name1, alternate_names1, 1);
-            name2 = props.finalArr[2].fields.name; alternate_names2 = props.finalArr[2].fields.alternate_names;
-            searchSelection(name2, alternate_names2, 2);
-            name3 = props.finalArr[3].fields.name; alternate_names3 = props.finalArr[3].fields.alternate_names;
-            searchSelection(name3, alternate_names3, 3);
+            input0(); input1(); input2(); input3();
             records4 = null;
             break;
         case 5:
-            name0 = props.finalArr[0].fields.name; alternate_names0 = props.finalArr[0].fields.alternate_names;
-            searchSelection(name0, alternate_names0, 0);
-            name1 = props.finalArr[1].fields.name; alternate_names1 = props.finalArr[1].fields.alternate_names;
-            searchSelection(name1, alternate_names1, 1);
-            name2 = props.finalArr[2].fields.name; alternate_names2 = props.finalArr[2].fields.alternate_names;
-            searchSelection(name2, alternate_names2, 2);
-            name3 = props.finalArr[3].fields.name; alternate_names3 = props.finalArr[3].fields.alternate_names;
-            searchSelection(name3, alternate_names3, 3);
-            name4 = props.finalArr[4].fields.name; alternate_names4 = props.finalArr[4].fields.alternate_names;
-            searchSelection(name4, alternate_names4, 4);
+            input0(); input1(); input2(); input3(); input4();
             break;
-    
+
         default:
-            records0 = null; records1 = null; records2 = null; records3 = null; records4 = null;
+            records0.res = null; records1.res = null; records2.res = null; records3.res = null; records4.res = null;
             break;
     }
-    let disableSearch = () => {
-        setTimeout(() => {
-            document.getElementById('searchTable').style.display = 'none';
-        }, 300);
-        // document.getElementById('searchTable').style.display = 'none';
+
+
+    const disableSearch = () => {
+       setTimeout(() => {
+           document.getElementById('searchTable').style.display = 'none';
+       }, 300);
     }
     return (
-        <div className="searchBox">
-            <form onSubmit={props.loadWeather}>
-                <input name="searchBar"
-                className="searchBar"
-                id="searchBar"
-                placeholder="Введите ваш город"
-                onInput={props.searchLive}
-                autoComplete="off"
-                onBlur={disableSearch}
-                ></input>
-                <button id="inputBtn">Посмотреть</button>
-            </form>
-            <table id="searchTable">
-                <tbody>
-                    <tr>
-                        <th>
-                            <button id="btn0" onClick={(event)=>props.clearInput(name0, name1, name2, name3, name4, event)}>{records0}</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <button id="btn1" onClick={(event)=>props.clearInput(name0, name1, name2, name3, name4, event)}>{records1}</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <button id="btn2" onClick={(event)=>props.clearInput(name0, name1, name2, name3, name4, event)}>{records2}</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <button id="btn3" onClick={(event)=>props.clearInput(name0, name1, name2, name3, name4, event)}>{records3}</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <button id="btn4" onClick={(event)=>props.clearInput(name0, name1, name2, name3, name4, event)}>{records4}</button>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div className="searchBox">
+        <form onSubmit={props.loadWeather} id="move">
+            <button id="inputBtn">Посмотреть</button>
+            <input name="searchBar"
+            className="searchBar"
+            id="searchBar"
+            placeholder="Введите ваш город"
+            onInput={props.searchLive}
+            autoComplete="off"
+            onBlur={disableSearch}
+            maxLength="20"
+            onFocus={() => {document.getElementById('searchBar').value='';}}
+            ></input>
+            
+        </form>
+        <table id="searchTable"><tbody>
+            <tr><th>
+                <button
+                id="btn0"
+                onClick={()=>props.clearInput(records0.name, records0.country)}>
+                    {records0.res}
+                    <img className="searchBtn" src={`./flags/${records0.country}.png`} alt="flag" />
+                </button>
+            </th></tr>
+            <tr><th>
+                <button
+                id="btn1"
+                onClick={()=>props.clearInput(records1.name, records1.country)}>
+                    {records1.res}
+                    <img className="searchBtn" src={`./flags/${records1.country}.png`} alt="flag" />
+                </button>
+            </th></tr>
+            <tr><th>
+                <button
+                id="btn2"
+                onClick={()=>props.clearInput(records2.name, records2.country)}>
+                    {records2.res}
+                    <img className="searchBtn" src={`./flags/${records2.country}.png`} alt="flag" />
+                </button>
+            </th></tr>
+            <tr><th>
+                <button
+                id="btn3"
+                onClick={()=>props.clearInput(records3.name, records3.country)}>
+                    {records3.res}
+                    <img className="searchBtn" src={`./flags/${records3.country}.png`} alt="flag" />
+                </button>
+            </th></tr>
+            <tr><th>
+                <button
+                id="btn4"
+                onClick={()=>props.clearInput(records4.name, records4.country)}>
+                    {records4.res}
+                    <img className="searchBtn" src={`./flags/${records4.country}.png`} alt="flag" />
+                </button>
+            </th></tr>
+        </tbody></table>
+    </div>
     );
 }
-    
+
 export default Input;

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap&subset=cyrillic,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
+body{
+  background-position: initial;
+  background-repeat: repeat;
+  background-size: initial;
+  min-height: 100vh;
+  background: url(../img/background.jpg);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app{
+  width: 70vw;
+  //overflow: hidden;
+  max-width: 800px;
+  min-width: 300px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 14px 20px 27px 17px rgba(0,0,0,0.54);
+  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.74) 100%);
+}

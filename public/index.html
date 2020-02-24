@@ -9,6 +9,8 @@
       content="Web site created using create-react-app"
     />
     <title>Weather App</title>
+
+
     <!-- preloader -->
     <style>
       *{
@@ -25,7 +27,6 @@
       z-index:20;
       background: rgb(244,227,255);
       background: radial-gradient(circle, rgba(244,227,255,1) 0%, rgba(255,255,255,1) 76%, rgba(236,236,236,1) 100%);
-
       }
       .load{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
       /*change these sizes to fit into your project*/
@@ -49,6 +50,9 @@
       }
   </style>
   </head>
+
+
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="preloader">
@@ -57,17 +61,10 @@
       </div>
     </div>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
+
+
+
   <script>
     window.addEventListener('load', () => {
     document.querySelector('.load').style.opacity = 0;
@@ -76,7 +73,11 @@
         setTimeout(() => {
             document.querySelector('#preloader').style.display = 'none';
         }, 600);
+        document.getElementById('searchBar').focus();
     }, 400);
     });
   </script>
+
+
+
 </html>

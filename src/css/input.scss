@@ -1,0 +1,140 @@
+.searchBox{
+    width: 100%;
+    position: relative;
+  
+    #searchTable{
+        //border: 1px solid green;
+        transform: translate(0, -7px);
+        left: 170px;
+        width: calc(100% - 176px);
+        position:absolute;
+        border-bottom: 3px solid rgba(0, 0, 0, 0.26);
+        border-left: 3px solid rgba(0, 0, 0, 0.26);
+        border-right: 3px solid rgba(0, 0, 0, 0.26);
+        background: rgb(255, 255, 255);
+        display: none;
+
+        tbody{
+            display: flex;
+            flex-direction: column;
+        }
+        tbody, th, tr, button{
+            width: 100%;
+        }
+        th{
+            display: block;
+        }
+        button{
+            background: transparent;
+            border-top: 3px solid rgba(0, 0, 0, 0.26);
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            border-radius: initial;
+        } button:hover{
+            background: rgba(248, 0, 0, 0.644);
+        }
+    }
+  
+    form{
+        width: -webkit-fill-available;
+        display: flex;
+    }
+    #btn0, #btn1, #btn2, #btn3, #btn4{
+        display: none;
+    } 
+    button{
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background: rgba(255, 0, 0, 0.397);
+        border: 3px solid rgba(0, 0, 0, 0.26);
+        cursor: pointer;
+        position: relative;
+  
+  
+        .searchBtn{
+              width: 45px;
+              height: 25px;
+              display: inline-block;
+              //position: absolute;
+              //right: 10%;
+              margin: 0 0 0 20px;
+              transform: translate(0, 5px);
+        }
+    }
+    button:hover{
+        background: rgba(255, 0, 0, 0.534);
+    }
+  
+    .searchBar{
+        width: -webkit-fill-available;
+        width: -moz-available;
+        background: rgba(255, 255, 255, 0.212);
+        border-radius: 10px;
+        border: 3px solid rgba(0, 0, 0, 0.26);
+        color: rgb(109, 109, 109);
+        font-size: 20px;
+        padding: 10px 20px;
+        appearance: none;
+        outline: none;
+        text-align: center;
+        caret-color: rgb(58, 58, 58);
+    }
+    .searchBar::placeholder{
+        color: rgb(0, 0, 0);
+    }
+    .searchBar:hover{
+        background: rgba(255, 255, 255, 0.76);
+    }
+    .searchBar:focus{
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+    }
+    .searchBar:focus::placeholder{
+        color: rgba(17, 17, 17, 0.781);
+    }
+}
+
+
+@media screen and(max-width:700px){
+    body{
+        align-items: flex-start;
+    }
+    .app{
+        width: 85vw;
+        height: auto;
+        margin-top: 10vh;
+    }
+    .app{
+        min-width: 250px;
+    }
+    
+    .searchBox{
+    
+        #searchTable{
+            //border: 1px solid green;
+            transform: translate(0, -8px);
+            left: 0;
+            width: 99%;
+            position:absolute;
+    
+            th{
+                display: block;
+            }
+            button{
+                margin: 0;
+                padding: 8px 0;
+            }
+        }
+    
+        #move{
+            display: block;
+        }
+        button{
+            margin-top: 5px;
+            padding: 5px 20px;
+            width: 100%;
+        }
+    }
+}
